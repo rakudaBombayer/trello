@@ -3,11 +3,21 @@ import React from 'react'
 const TaskAddInput = ({
   inputText,
   setInputText,
-  taskList,
-  setTaskList
+  setTaskList,
+  taskList
 }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
+    //カードを追加する。
+    setTaskList([
+      ...taskList,
+      {
+        text: inputText,
+        // id: taskList.length,
+        // isDone: false
+      },
+    ]);
+    setInputText("");
   };
 
   const handleChange = (e) => {
@@ -22,6 +32,7 @@ const TaskAddInput = ({
         placeholder="add a task" 
         className="taskAddInput" 
         onChange={handleChange}
+        value={inputText}
         />
       </form>
     </div>
